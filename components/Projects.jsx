@@ -78,7 +78,7 @@ details: {
   },
   { 
     title: "Fingerprint Detector and Blocker",
-desc: "A machine-learning-powered web application that predicts crop yield and market price for selected crops, with SMS notifications to support farmers’ decision-making.",
+desc: "A Chrome extension that detects and blocks browser fingerprinting attempts to protect your privacy online.",
 githubUrl: "https://github.com/Navyasri12355/fingerprint-defender",
 details: {
   technologies: [
