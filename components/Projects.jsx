@@ -77,6 +77,32 @@ details: {
     }
   },
   { 
+    title: "Fingerprint Detector and Blocker",
+desc: "A machine-learning-powered web application that predicts crop yield and market price for selected crops, with SMS notifications to support farmers’ decision-making.",
+githubUrl: "https://github.com/Navyasri12355/fingerprint-defender",
+details: {
+  technologies: [
+    "JavaScript (ES6+)",
+    "Chrome Extension Manifest V3",
+    "Content Scripts (MAIN/ISOLATED worlds)",
+    "Chrome APIs (scripting, tabs, storage)",
+    "HTML/CSS",
+    "Service Workers"
+  ],
+  features: [
+    "Real-time detection of 8+ fingerprinting techniques (Canvas, WebGL, Audio, Hardware, etc.)",
+    "Active blocking with spoofed values to prevent accurate fingerprinting",
+    "Toggle-based protection control with persistent settings",
+    "Clean popup interface showing detection status and blocking controls",
+    "Comprehensive test suite for validating protection effectiveness"
+  ],
+  challenges: 
+    "Implementing early-stage JavaScript API hooking to intercept fingerprinting before page scripts execute, while navigating Chrome's Content Security Policy restrictions and ensuring compatibility with Manifest V3's isolated world architecture.",
+  outcome: 
+    "Successfully deployed a privacy-focused extension that provides 99% protection against client-side fingerprinting techniques, with seamless user experience and zero configuration required. Effectively blocks tracking from major advertising networks and analytics platforms."
+    }
+  },
+  { 
     title: "Crop Demand Forecasting Model",
 desc: "A machine-learning-powered web application that predicts crop yield and market price for selected crops, with SMS notifications to support farmers’ decision-making.",
 githubUrl: "https://github.com/Navyasri12355/Crop_Demand_Prediction",
