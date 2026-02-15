@@ -103,6 +103,30 @@ details: {
     }
   },
   { 
+    title: "Voice-Activated System",
+    desc: "A powerful hands-free computer control system built with Python that enables users to operate their Windows OS through voice commands, featuring both internet-reliant and fully offline modes.",
+    githubUrl: "https://github.com/Navyasri12355/Voice-Activated-System",
+    details: {
+      technologies: [
+        "Python",
+        "Spacy (NLP)",
+        "Vosk (Offline Speech Recognition)",
+        "Google Web Speech API",
+        "OS Module (Windows Automation)",
+        "SpeechRecognition Library"
+      ],
+      features: [
+        "Advanced dual-mode speech recognition: Online (Google Web Speech API) for high accuracy and Offline (Vosk) for privacy",
+        "Custom NLP Engine powered by Spacy with a trained TextCategorizer and NER to handle command variations robustly",
+        "Full desktop automation including application control (open/close), media playback, volume adjustment, and system power states (lock/sleep/shutdown)"
+      ],
+      challenges: 
+        "Developing a custom NLP model to accurately interpret diverse user commands and integrating offline speech recognition (Vosk) to ensure functionality without an internet connection.",
+      outcome: 
+        "Created a comprehensive voice assistant that enhances computer accessibility, allowing users to navigate the web and control system functions entirely hands-free."
+    }
+  },
+  { 
     title: "Crop Demand Forecasting Model",
 desc: "A machine-learning-powered web application that predicts crop yield and market price for selected crops, with SMS notifications to support farmers’ decision-making.",
 githubUrl: "https://github.com/Navyasri12355/Crop_Demand_Prediction",
