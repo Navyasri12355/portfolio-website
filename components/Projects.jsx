@@ -77,6 +77,31 @@ details: {
     }
   },
   { 
+    title: "Federated Learning MLOps Platform",
+    desc: "A scalable decentralized machine learning system built with Python that enables collaborative model training across distributed clients while maintaining data privacy and providing robust MLOps orchestration.",
+    githubUrl: "https://github.com/Navyasri12355/fl_with_mlops",
+    details: {
+      technologies: [
+        "Python",
+        "TensorFlow / Keras",
+        "Flower (Federated Learning framework)",
+        "MLflow (Experiment Tracking)",
+        "Prefect (Workflow Orchestration)",
+        "React & Vite (Frontend Dashboard)",
+        "Supabase (Authentication & Database Management)"
+      ],
+      features: [
+        "Distributed Federated Learning architecture powered by the Flower framework, ensuring local data privacy while iteratively improving a global shared model.",
+        "End-to-end MLOps automation using Prefect for workflow scheduling and MLflow for granular tracking of metrics, machine performance, and model divergence.",
+        "Comprehensive management dashboard built with React and Vite, featuring Supabase authentication, real-time training monitoring, and automated performance reporting."
+      ],
+      challenges: 
+        "Mitigating model weight divergence across heterogeneous data sources and orchestrating complex asynchronous communications between the central server and multiple decentralized clients.",
+      outcome: 
+        "Created a production-grade Federated Learning ecosystem that bridges secure, decentralized training with enterprise MLOps standards for scalable and privacy-preserving AI development."
+    }
+  },
+  { 
     title: "Fingerprint Detector and Blocker",
 desc: "A Chrome extension that detects and blocks browser fingerprinting attempts to protect your privacy online.",
 githubUrl: "https://github.com/Navyasri12355/fingerprint-defender",
