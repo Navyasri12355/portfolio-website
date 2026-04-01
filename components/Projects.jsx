@@ -3,25 +3,35 @@ import { useState } from "react";
 import Section from "./Section";
 
 const projects = [
-  { 
-    title: "Ayurvedic Clinical Bridge", 
-    desc: "An AI-powered system that connects allopathic medicine with Ayurvedic treatments, offering medicine mapping, disease-based recommendations, and safety analysis for informed integrative care.",
-    githubUrl: "https://github.com/Navyasri12355/ayurvedic-clinical-bridge",
-    demoVideoUrl: "https://www.youtube.com/embed/Lnyxag6LYPA", // Converted to embed format
+  {
+    title: "AI-Powered Market Intelligence Platform",
+    desc: "A multi-agent AI platform delivering real-time NSE/BSE market intelligence for Indian retail investors, featuring signal discovery, chart analysis, portfolio diagnostics, and a streaming market chat interface.",
+    githubUrl: "https://github.com/Navyasri12355/marketmind",
+    demoVideoUrl: "https://www.youtube.com/embed/Q3fhNBZ_56s?si=zDP-Sks1UXzwspRN", 
     details: {
-      technologies: ["React", "Typescript", "Python", "FastAPI", "SQLite"],
-      features: [
-        "Medicine mapping between allopathic and Ayurvedic treatments",
-        "Disease-based treatment recommendations",
-        "Safety analysis and herb-drug interaction warnings",
-        "Prescription analysis with entity extraction",
-        "Role-based authentication for practitioners and general users",
-        "Clinical knowledge system with comprehensive Ayurvedic protocols",
-        "Symptom-based treatment search functionality"
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React 18 + Vite",
+        "Groq API (Llama 3.3 70B)",
+        "yfinance (NSE/BSE Data)",
+        "Server-Sent Events (SSE)",
+        "Pandas",
+        "Recharts",
+        "Framer Motion",
       ],
-      challenges: "Procuring authentic and reliable Ayurvedic data sources from traditional texts, verified clinical studies, and standardized herbal formulations while ensuring data quality, accuracy, and clinical relevance for modern healthcare applications.",
-      outcome: "Successfully created a comprehensive clinical decision-support system that bridges two medical systems, providing practitioners with detailed Ayurvedic alternatives, safety warnings, and evidence-based treatment recommendations for informed integrative healthcare decisions."
-    }
+      features: [
+        "Opportunity Radar agent that scans bulk/block deals, insider trades, and volume anomalies, ranking signals with confidence scores via Llama 3.3 70B",
+        "Chart Intelligence agent computing RSI, MACD, Bollinger Bands, and Stochastic indicators with AI-narrated pattern detection streamed in real-time",
+        "Streaming Market Chat with multi-turn memory, live data injection, and portfolio-aware context powered by Llama 3.3 70B via Groq",
+        "Portfolio X-Ray for real-time P&L tracking, sector allocation pie chart, and performance breakdown — no LLM, pure data compute",
+        "Market Dashboard with live NSE/BSE index snapshots, top movers, and a market brief aggregated via yfinance",
+      ],
+      challenges:
+        "Building custom multi-agent orchestration without LangChain — each agent shares a single Groq LLM client with primary/fallback model switching. Synchronizing SSE streams from parallel agents with the React frontend while maintaining low latency, and gracefully falling back to mock data when external APIs (yfinance, SEBI filings) are unavailable.",
+      outcome:
+        "Delivered a unified, institutional-grade research platform for India's 14 crore+ retail demat account holders — reducing signal detection from hours to real-time, surfacing 8–15 actionable alerts daily, and enabling natural-language portfolio analysis through a streaming AI chat interface.",
+    },
   },
   { 
     title: "MSME AI Assistant", 
@@ -128,6 +138,25 @@ details: {
     }
   },
   { 
+    title: "Ayurvedic Clinical Bridge", 
+    desc: "An AI-powered system that connects allopathic medicine with Ayurvedic treatments, offering medicine mapping, disease-based recommendations, and safety analysis for informed integrative care.",
+    githubUrl: "https://github.com/Navyasri12355/ayurvedic-clinical-bridge",
+    details: {
+      technologies: ["React", "Typescript", "Python", "FastAPI", "SQLite"],
+      features: [
+        "Medicine mapping between allopathic and Ayurvedic treatments",
+        "Disease-based treatment recommendations",
+        "Safety analysis and herb-drug interaction warnings",
+        "Prescription analysis with entity extraction",
+        "Role-based authentication for practitioners and general users",
+        "Clinical knowledge system with comprehensive Ayurvedic protocols",
+        "Symptom-based treatment search functionality"
+      ],
+      challenges: "Procuring authentic and reliable Ayurvedic data sources from traditional texts, verified clinical studies, and standardized herbal formulations while ensuring data quality, accuracy, and clinical relevance for modern healthcare applications.",
+      outcome: "Successfully created a comprehensive clinical decision-support system that bridges two medical systems, providing practitioners with detailed Ayurvedic alternatives, safety warnings, and evidence-based treatment recommendations for informed integrative healthcare decisions."
+    }
+  },
+  { 
     title: "Voice-Activated System",
     desc: "A powerful hands-free computer control system built with Python that enables users to operate their Windows OS through voice commands, featuring both internet-reliant and fully offline modes.",
     githubUrl: "https://github.com/Navyasri12355/Voice-Activated-System",
@@ -150,35 +179,6 @@ details: {
       outcome: 
         "Created a comprehensive voice assistant that enhances computer accessibility, allowing users to navigate the web and control system functions entirely hands-free."
     }
-  },
-  {
-    title: "AI-Powered Market Intelligence Platform",
-    desc: "A multi-agent AI platform delivering real-time NSE/BSE market intelligence for Indian retail investors, featuring signal discovery, chart analysis, portfolio diagnostics, and a streaming market chat interface.",
-    githubUrl: "https://github.com/Navyasri12355/marketmind",
-    details: {
-      technologies: [
-        "Python",
-        "FastAPI",
-        "React 18 + Vite",
-        "Groq API (Llama 3.3 70B)",
-        "yfinance (NSE/BSE Data)",
-        "Server-Sent Events (SSE)",
-        "Pandas",
-        "Recharts",
-        "Framer Motion",
-      ],
-      features: [
-        "Opportunity Radar agent that scans bulk/block deals, insider trades, and volume anomalies, ranking signals with confidence scores via Llama 3.3 70B",
-        "Chart Intelligence agent computing RSI, MACD, Bollinger Bands, and Stochastic indicators with AI-narrated pattern detection streamed in real-time",
-        "Streaming Market Chat with multi-turn memory, live data injection, and portfolio-aware context powered by Llama 3.3 70B via Groq",
-        "Portfolio X-Ray for real-time P&L tracking, sector allocation pie chart, and performance breakdown — no LLM, pure data compute",
-        "Market Dashboard with live NSE/BSE index snapshots, top movers, and a market brief aggregated via yfinance",
-      ],
-      challenges:
-        "Building custom multi-agent orchestration without LangChain — each agent shares a single Groq LLM client with primary/fallback model switching. Synchronizing SSE streams from parallel agents with the React frontend while maintaining low latency, and gracefully falling back to mock data when external APIs (yfinance, SEBI filings) are unavailable.",
-      outcome:
-        "Delivered a unified, institutional-grade research platform for India's 14 crore+ retail demat account holders — reducing signal detection from hours to real-time, surfacing 8–15 actionable alerts daily, and enabling natural-language portfolio analysis through a streaming AI chat interface.",
-    },
   },
 ];
 
