@@ -151,30 +151,34 @@ details: {
         "Created a comprehensive voice assistant that enhances computer accessibility, allowing users to navigate the web and control system functions entirely hands-free."
     }
   },
-  { 
-    title: "Crop Demand Forecasting Model",
-desc: "A machine-learning-powered web application that predicts crop yield and market price for selected crops, with SMS notifications to support farmers’ decision-making.",
-githubUrl: "https://github.com/Navyasri12355/Crop_Demand_Prediction",
-details: {
-  technologies: [
-    "Python",
-    "Flask",
-    "Scikit-learn",
-    "Pandas",
-    "NumPy",
-    "Fast2SMS API",
-    "HTML (Jinja2 templating)"
-  ],
-  features: [
-    "Predicts crop yield (quintals/hectare) using a trained ML model",
-    "Forecasts expected market price (INR) for the predicted yield",
-    "Sends prediction results via SMS to farmers using Fast2SMS API"
-  ],
-  challenges: 
-    "Integrating real-time SMS notifications into the prediction workflow and ensuring robust handling of user input while training a reliable ML model with limited agricultural data.",
-  outcome: 
-    "Delivered a functional Flask app that enables users to input crop details and receive actionable yield and price predictions, with the added benefit of SMS alerts to improve accessibility and farmer engagement."
-    }
+  {
+    title: "AI-Powered Market Intelligence Platform",
+    desc: "A multi-agent AI platform delivering real-time NSE/BSE market intelligence for Indian retail investors, featuring signal discovery, chart analysis, portfolio diagnostics, and a streaming market chat interface.",
+    githubUrl: "https://github.com/Navyasri12355/marketmind",
+    details: {
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React 18 + Vite",
+        "Groq API (Llama 3.3 70B)",
+        "yfinance (NSE/BSE Data)",
+        "Server-Sent Events (SSE)",
+        "Pandas",
+        "Recharts",
+        "Framer Motion",
+      ],
+      features: [
+        "Opportunity Radar agent that scans bulk/block deals, insider trades, and volume anomalies, ranking signals with confidence scores via Llama 3.3 70B",
+        "Chart Intelligence agent computing RSI, MACD, Bollinger Bands, and Stochastic indicators with AI-narrated pattern detection streamed in real-time",
+        "Streaming Market Chat with multi-turn memory, live data injection, and portfolio-aware context powered by Llama 3.3 70B via Groq",
+        "Portfolio X-Ray for real-time P&L tracking, sector allocation pie chart, and performance breakdown — no LLM, pure data compute",
+        "Market Dashboard with live NSE/BSE index snapshots, top movers, and a market brief aggregated via yfinance",
+      ],
+      challenges:
+        "Building custom multi-agent orchestration without LangChain — each agent shares a single Groq LLM client with primary/fallback model switching. Synchronizing SSE streams from parallel agents with the React frontend while maintaining low latency, and gracefully falling back to mock data when external APIs (yfinance, SEBI filings) are unavailable.",
+      outcome:
+        "Delivered a unified, institutional-grade research platform for India's 14 crore+ retail demat account holders — reducing signal detection from hours to real-time, surfacing 8–15 actionable alerts daily, and enabling natural-language portfolio analysis through a streaming AI chat interface.",
+    },
   },
 ];
 
