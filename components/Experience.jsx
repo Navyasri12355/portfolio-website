@@ -1,3 +1,4 @@
+"use client";
 import Section from "./Section";
 
 const workExperience = [

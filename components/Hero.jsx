@@ -97,7 +97,7 @@ export default function Hero() {
           fontWeight: 300,
         }}>
           Focused on building ethical, scalable, and real-world systems.
-          From federated learning to agentic AI — designing for societal impact.
+          From federated learning to agentic AI - designing for societal impact.
         </motion.p>
 
         <motion.div {...fadeUp(0.44)} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
