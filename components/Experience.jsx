@@ -10,7 +10,13 @@ export default function Experience() {
       title: "Internship in Xtelify Limited (Airtel Digital)",
       duration: "6 months",
       field: "AI Research and Development",
-      description: "Currently developing an agentic AI system for autonomous telecom capacity management, using a multi-agent framework (predictive, optimization, anomaly-detection, and orchestrator agents) to enable real-time, adaptive, and predictive resource allocation."
+      description: "Developed an agentic AI system for autonomous telecom capacity management, using a multi-agent framework (predictive, optimization, anomaly-detection, and orchestrator agents) to enable real-time, adaptive, and predictive resource allocation."
+    },
+    {
+      title: "Internship in Aeronautical Development Agency (ADA)",
+      duration: "4 weeks",
+      field: "Edge AI Deployment and Testing",
+      description: "Built a real-time testing framework with custom-built GStreamer plugins for Automatic Target Recognition (ATR) systems at ADA using NVIDIA DeepStream SDK."
     }
   ];
 
