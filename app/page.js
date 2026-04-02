@@ -7,15 +7,29 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </div>
-    </div>
+    <main style={{ background: "var(--bg)" }}>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Contact />
+      <footer style={{
+        borderTop: "1px solid var(--border)",
+        padding: "2rem 4rem",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: "1200px",
+        margin: "0 auto",
+      }}>
+        <p style={{ fontFamily: "var(--mono)", fontSize: "0.65rem", letterSpacing: "0.15em", color: "var(--text-dim)" }}>
+          © 2025 Navyasri Pulipati
+        </p>
+        <p style={{ fontFamily: "var(--mono)", fontSize: "0.65rem", letterSpacing: "0.15em", color: "var(--text-dim)" }}>
+          RVCE · Bengaluru · AI & ML Engineering
+        </p>
+      </footer>
+    </main>
   );
 }
