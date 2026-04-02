@@ -50,7 +50,7 @@ export default function Hero() {
           gap: "1rem",
         }}>
           <span style={{ display: "inline-block", width: "40px", height: "1px", background: "var(--accent)" }} />
-          AI & ML Engineer · RVCE, Bengaluru
+          AI & ML Student · RVCE, Bengaluru
         </motion.div>
 
         <motion.h1 {...fadeUp(0.1)} style={{
