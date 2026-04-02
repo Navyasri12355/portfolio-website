@@ -8,7 +8,17 @@ const skills = [
   },
   {
     category: "Machine Learning & AI",
-    items: ["TensorFlow", "PyTorch", "Scikit-Learn", "NumPy", "Pandas", "Matplotlib", "NLP", "DNNs", "CNNs"],
+    items: [
+    "Vision-Language Models (VLM)", // Hallucination Benchmarking
+    "Agentic RAG & Tool-Use",       // MSME-AI, Offline OS, MarketMind
+    "Federated Learning & MLOps",   // Flower, MLflow, CI/CD for FL
+    "Healthcare AI & Ayurveda",     // Ayurvedic Clinical Bridge, IITM-Hack
+    "Adversarial Robustness",       // Fingerprint Defender, Hallucination diagnostics
+    "Real-time Streaming (Pathway)",// Financial/Medical data ingestion
+    "Multi-modal AI (Voice/Vision)",// Voice-Activated Systems, OCR
+    "Hardware Optimization",        // ONNX, 4-bit Quantization, Ryzen/T4
+    "PyTorch, TensorFlow & Scikit", // Core framework proficiency
+  ],
   },
   {
     category: "Embedded Systems",
