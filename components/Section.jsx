@@ -7,7 +7,8 @@ export default function Section({ children, id, style = {} }) {
       id={id}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      exit={{ opacity: 0, y: 32 }}
+      viewport={{ margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       style={{
         padding: "7rem 4rem",

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const FloatingBubbles = () => {
   const [bubbles, setBubbles] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     // Generate bubbles with different styles
@@ -23,6 +24,14 @@ const FloatingBubbles = () => {
       { id: 8, x: "25%", y: "35%", size: 38, style: "striped", color: "#b8a8d8", duration: 27, delay: 1 },
     ];
     setBubbles(generatedBubbles);
+
+    // Track scroll for responsive animations
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const BubbleContent = ({ bubble }) => {
@@ -83,8 +92,9 @@ const FloatingBubbles = () => {
             top: bubble.y,
           }}
           animate={{
-            y: [0, -30, 0],
-            x: [0, 15, -10, 0],
+            y: [0, -40, 0],
+            x: [0, 20, -15, 0],
+            scale: [1, 1.05, 0.95, 1],
           }}
           transition={{
             duration: bubble.duration,

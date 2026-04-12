@@ -16,6 +16,8 @@ export default function Hero() {
       padding: "8rem 4rem 6rem",
       position: "relative",
       overflow: "hidden",
+      maxWidth: "1400px",
+      margin: "0 auto",
     }}>
       {/* Background glow with purple gradient */}
       <div style={{
@@ -38,7 +40,12 @@ export default function Hero() {
         WebkitMaskImage: "radial-gradient(ellipse 55% 65% at 80% 50%, black, transparent)",
       }} />
 
-      <div style={{ maxWidth: "1100px", position: "relative", zIndex: 1 }}>
+      {/* Decorative right side circles - positioned relative to hero section */}
+
+      <div style={{ width: "100%", position: "relative", zIndex: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+          {/* Left column */}
+          <div>
         <motion.div {...fadeUp(0)} style={{
           fontFamily: "var(--cute)",
           fontSize: "0.85rem",
@@ -172,6 +179,53 @@ export default function Hero() {
             GitHub
           </a>
         </motion.div>
+          </div>
+
+          {/* Right column - Key highlights */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            <div style={{
+              padding: "1.5rem",
+              background: "var(--purple-light)",
+              borderRadius: "12px",
+              borderLeft: "4px solid var(--accent)",
+            }}>
+              <div style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: "0.5rem", textTransform: "uppercase" }}>
+                Expertise
+              </div>
+              <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
+                AI/ML systems, Federated Learning, Vision-Language Models, Agentic AI, and ethical AI design
+              </p>
+            </div>
+
+            <div style={{
+              padding: "1.5rem",
+              background: "var(--purple-light)",
+              borderRadius: "12px",
+              borderLeft: "4px solid var(--accent)",
+            }}>
+              <div style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: "0.5rem", textTransform: "uppercase" }}>
+                Focus
+              </div>
+              <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
+                Building responsible, scalable systems for real-world impact
+              </p>
+            </div>
+
+            <div style={{
+              padding: "1.5rem",
+              background: "var(--purple-light)",
+              borderRadius: "12px",
+              borderLeft: "4px solid var(--accent)",
+            }}>
+              <div style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.08em", marginBottom: "0.5rem", textTransform: "uppercase" }}>
+                Experience
+              </div>
+              <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
+                3 internships in AI/ML, from early-stage startups to defense tech
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
