@@ -11,7 +11,7 @@ export default function Section({ children, id, style = {} }) {
       transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       style={{
         padding: "7rem 4rem",
-        maxWidth: "1200px",
+        maxWidth: "1300px",
         margin: "0 auto",
         ...style,
       }}

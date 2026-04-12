@@ -28,33 +28,43 @@ export default function Navbar() {
       justifyContent: "space-between",
       padding: "1.4rem 4rem",
       borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-      background: scrolled ? "rgba(9,9,11,0.88)" : "transparent",
+      background: scrolled ? "rgba(248, 247, 252, 0.92)" : "transparent",
       backdropFilter: scrolled ? "blur(20px)" : "none",
       transition: "all 0.4s ease",
     }}>
       <a href="#hero" style={{
-        fontFamily: "var(--mono)",
-        fontSize: "0.75rem",
-        letterSpacing: "0.2em",
-        color: "var(--accent)",
+        fontFamily: "var(--cute)",
+        fontSize: "0.8rem",
+        letterSpacing: "0.1em",
+        color: "var(--purple-dark)",
         textTransform: "uppercase",
         textDecoration: "none",
+        fontWeight: 700,
       }}>NP</a>
 
       <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
         {links.map(({ href, label }) => (
           <li key={href}>
             <a href={href} style={{
-              fontFamily: "var(--mono)",
-              fontSize: "0.68rem",
-              letterSpacing: "0.15em",
+              fontFamily: "var(--cute)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.08em",
               textTransform: "uppercase",
-              color: "var(--text-muted)",
+              color: "var(--text)",
               textDecoration: "none",
-              transition: "color 0.2s",
+              transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+              paddingBottom: "0.25rem",
+              borderBottom: "1px solid transparent",
+              fontWeight: 600,
             }}
-            onMouseEnter={e => e.target.style.color = "var(--accent)"}
-            onMouseLeave={e => e.target.style.color = "var(--text-muted)"}
+            onMouseEnter={e => {
+              e.target.style.color = "var(--accent)";
+              e.target.style.borderColor = "var(--accent)";
+            }}
+            onMouseLeave={e => {
+              e.target.style.color = "var(--text)";
+              e.target.style.borderColor = "transparent";
+            }}
             >{label}</a>
           </li>
         ))}

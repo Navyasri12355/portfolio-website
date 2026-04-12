@@ -8,35 +8,36 @@ export default function Contact() {
       <Section id="contact" style={{ textAlign: "center" }}>
         <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <div style={{
-            fontFamily: "var(--mono)",
-            fontSize: "0.68rem",
-            letterSpacing: "0.3em",
+            fontFamily: "var(--cute)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--accent)",
+            color: "var(--purple-dark)",
             marginBottom: "1rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             gap: "0.75rem",
+            fontWeight: 700,
           }}>
-            <span style={{ display: "inline-block", width: "40px", height: "1px", background: "var(--accent)", opacity: 0.5 }} />
+            <span style={{ display: "inline-block", width: "40px", height: "2px", background: "var(--purple-dark)", opacity: 0.6 }} />
             05 — Contact
-            <span style={{ display: "inline-block", width: "40px", height: "1px", background: "var(--accent)", opacity: 0.5 }} />
+            <span style={{ display: "inline-block", width: "40px", height: "2px", background: "var(--purple-dark)", opacity: 0.6 }} />
           </div>
 
           <h2 style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            fontWeight: 300,
-            color: "var(--white)",
-            lineHeight: 1.18,
-            letterSpacing: "-0.01em",
+            fontWeight: 600,
+            color: "var(--text)",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
             marginBottom: "1.2rem",
           }}>
-            Let's<br /><em style={{ fontStyle: "italic", color: "var(--accent)" }}>Connect</em>
+            Let's<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Connect</em>
           </h2>
 
-          <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", marginBottom: "2rem", lineHeight: 1.7, fontWeight: 300 }}>
+          <p style={{ fontSize: "1rem", color: "var(--text-muted)", marginBottom: "2rem", lineHeight: 1.9, fontWeight: 400 }}>
             Feel free to reach out for opportunities, collaborations, or discussions.
           </p>
 
@@ -45,18 +46,26 @@ export default function Contact() {
             style={{
               fontFamily: "var(--serif)",
               fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
-              color: "var(--white)",
+              color: "var(--text)",
               textDecoration: "none",
               display: "inline-block",
               marginBottom: "3rem",
-              borderBottom: "1px solid var(--border-light)",
-              paddingBottom: "0.3rem",
+              borderBottom: "2px solid var(--accent)",
+              paddingBottom: "0.5rem",
               fontStyle: "italic",
               fontWeight: 300,
-              transition: "color 0.2s, border-color 0.2s",
+              transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
             }}
-            onMouseEnter={e => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.borderColor = "var(--accent)"; }}
-            onMouseLeave={e => { e.currentTarget.style.color = "var(--white)"; e.currentTarget.style.borderColor = "var(--border-light)"; }}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = "var(--white)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.textShadow = "0 4px 12px rgba(201, 184, 228, 0.2)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = "var(--text)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.textShadow = "none";
+            }}
           >
             pulipatinavyasri@gmail.com
           </a>
@@ -88,19 +97,34 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontFamily: "var(--mono)",
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.2em",
+                  fontFamily: "var(--cute)",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: "var(--text-muted)",
+                  color: "var(--text)",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  transition: "color 0.2s",
+                  padding: "0.7rem 1.4rem",
+                  border: "1.5px solid var(--accent)",
+                  borderRadius: "20px",
+                  background: "var(--purple-light)",
+                  transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                  fontWeight: 700,
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = "var(--accent)"}
-                onMouseLeave={e => e.currentTarget.style.color = "var(--text-muted)"}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.color = "var(--white)";
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(201, 184, 228, 0.3)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "var(--purple-light)";
+                  e.currentTarget.style.color = "var(--text)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               >
                 {icon}
                 {label}

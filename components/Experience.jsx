@@ -34,53 +34,66 @@ export default function Experience() {
       <div style={{ width: "100%", height: "1px", background: "var(--border)", maxWidth: "1200px", margin: "0 auto" }} />
       <Section id="experience">
         <div style={{
-          fontFamily: "var(--mono)",
-          fontSize: "0.68rem",
-          letterSpacing: "0.3em",
+          fontFamily: "var(--cute)",
+          fontSize: "0.75rem",
+          letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: "var(--accent)",
+          color: "var(--purple-dark)",
           marginBottom: "1rem",
           display: "flex",
           alignItems: "center",
           gap: "0.75rem",
+          fontWeight: 700,
         }}>
           04 — Experience
-          <span style={{ display: "inline-block", width: "40px", height: "1px", background: "var(--accent)", opacity: 0.5 }} />
+          <span style={{ display: "inline-block", width: "40px", height: "2px", background: "var(--purple-dark)", opacity: 0.6 }} />
         </div>
         <h2 style={{
           fontFamily: "var(--serif)",
           fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          fontWeight: 300,
-          color: "var(--white)",
-          lineHeight: 1.18,
-          letterSpacing: "-0.01em",
+          fontWeight: 600,
+          color: "var(--text)",
+          lineHeight: 1.15,
+          letterSpacing: "-0.02em",
           marginBottom: "3.5rem",
         }}>
-          Work &amp;<br /><em style={{ fontStyle: "italic", color: "var(--accent)" }}>Achievements</em>
+          Work &amp;<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Achievements</em>
         </h2>
 
         {/* Experience list */}
         <div>
           {workExperience.map((exp, i) => (
-            <div key={i} style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 2fr",
-              gap: "4rem",
-              padding: "2.5rem 0",
-              borderBottom: "1px solid var(--border)",
-            }}>
+              <div key={i} style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 2fr",
+                gap: "4rem",
+                padding: "2.5rem",
+                marginBottom: "1.2rem",
+                borderRadius: "8px",
+                background: "var(--surface2)",
+                transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "var(--accent-dim)";
+                e.currentTarget.style.transform = "translateX(6px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "var(--surface2)";
+                e.currentTarget.style.transform = "translateX(0)";
+              }}
+              >
               <div>
-                <div style={{ fontFamily: "var(--serif)", fontSize: "1.05rem", fontWeight: 300, color: "var(--white)", marginBottom: "0.4rem", lineHeight: 1.4 }}>
+                <div style={{ fontFamily: "var(--serif)", fontSize: "1.1rem", fontWeight: 600, color: "var(--text)", marginBottom: "0.4rem", lineHeight: 1.4 }}>
                   {exp.org}
                 </div>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "0.62rem", color: "var(--text-dim)", letterSpacing: "0.15em", marginBottom: "0.4rem" }}>
+                <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", color: "var(--text-dim)", letterSpacing: "0.08em", marginBottom: "0.4rem", fontWeight: 600 }}>
                   {exp.period}
                 </div>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "0.65rem", color: "var(--accent)", letterSpacing: "0.08em" }}>
+                <div style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--accent)", letterSpacing: "0.05em", fontWeight: 700 }}>
                   {exp.field}
                 </div>
               </div>
-              <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.85, paddingTop: "0.15rem", fontWeight: 300 }}>
+              <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.95, paddingTop: "0.15rem", fontWeight: 400 }}>
                 {exp.description}
               </p>
             </div>
@@ -90,18 +103,19 @@ export default function Experience() {
         {/* Achievements */}
         <div style={{ marginTop: "4rem" }}>
           <div style={{
-            fontFamily: "var(--mono)",
-            fontSize: "0.68rem",
-            letterSpacing: "0.3em",
+            fontFamily: "var(--cute)",
+            fontSize: "0.75rem",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--accent)",
+            color: "var(--purple-dark)",
             marginBottom: "1.5rem",
             display: "flex",
             alignItems: "center",
             gap: "0.75rem",
+            fontWeight: 700,
           }}>
             Hackathons & Achievements
-            <span style={{ display: "inline-block", width: "40px", height: "1px", background: "var(--accent)", opacity: 0.5 }} />
+            <span style={{ display: "inline-block", width: "40px", height: "2px", background: "var(--purple-dark)", opacity: 0.6 }} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {achievements.map((a, i) => (
@@ -109,14 +123,26 @@ export default function Experience() {
                 display: "flex",
                 alignItems: "center",
                 gap: "1.5rem",
-                padding: "1.1rem 1.4rem",
-                border: "1px solid var(--border)",
+                padding: "1.2rem 1.5rem",
+                border: "1.5px solid var(--border)",
+                borderRadius: "6px",
                 fontSize: "0.9rem",
                 color: "var(--text-muted)",
-                transition: "border-color 0.2s, color 0.2s",
+                background: "var(--white)",
+                transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--border-light)"; e.currentTarget.style.color = "var(--text)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.color = "var(--text-muted)"; }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "var(--accent)";
+                e.currentTarget.style.color = "var(--text)";
+                e.currentTarget.style.background = "var(--purple-light)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.color = "var(--text-muted)";
+                e.currentTarget.style.background = "var(--white)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
               >
                 <span style={{ color: "var(--accent)", fontSize: "0.45rem", flexShrink: 0 }}>◆</span>
                 {a}

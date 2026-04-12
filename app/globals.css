@@ -1,22 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg: #09090b;
-  --surface: #111113;
-  --surface2: #1a1a1e;
-  --border: rgba(255,255,255,0.07);
-  --border-light: rgba(255,255,255,0.13);
-  --text: #e8e6e0;
-  --text-muted: #7a7870;
-  --text-dim: #3e3c3a;
-  --accent: #c8a96e;
-  --accent-dim: rgba(200,169,110,0.12);
-  --accent-glow: rgba(200,169,110,0.06);
-  --white: #f5f3ee;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --mono: 'DM Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
+  --bg: #faf9fc;
+  --surface: #f5f3fa;
+  --surface2: #ede8f9;
+  --border: rgba(168, 154, 214, 0.25);
+  --border-light: rgba(168, 154, 214, 0.4);
+  --text: #3d2e5f;
+  --text-muted: #6b5b7f;
+  --text-dim: #9d8fb5;
+  --accent: #b59fd8;
+  --accent-dim: rgba(181, 159, 216, 0.15);
+  --accent-glow: rgba(181, 159, 216, 0.1);
+  --white: #ffffff;
+  --purple-light: #f0eaff;
+  --purple-dark: #8b6ba8;
+  --purple-accent: #d4c5e8;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', sans-serif;
+  --cute: 'Quicksand', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,8 +30,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.8;
   overflow-x: hidden;
 }
 
@@ -37,7 +40,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.022;
+  opacity: 0.008;
   pointer-events: none;
   z-index: 9999;
 }

@@ -10,7 +10,6 @@ const skills = [
     category: "Machine Learning & AI",
     items: [
     "Vision-Language Models (VLM)", // Hallucination Benchmarking
-    "Agentic RAG & Tool-Use",       // MSME-AI, Offline OS, MarketMind
     "Federated Learning & MLOps",   // Flower, MLflow, CI/CD for FL
     "Healthcare AI & Ayurveda",     // Ayurvedic Clinical Bridge, IITM-Hack
     "Adversarial Robustness",       // Fingerprint Defender, Hallucination diagnostics
@@ -33,24 +32,32 @@ const skills = [
 function Pill({ label }) {
   return (
     <span style={{
-      padding: "0.38rem 0.9rem",
-      border: "1px solid var(--border)",
-      fontFamily: "var(--mono)",
-      fontSize: "0.7rem",
-      color: "var(--text-muted)",
-      letterSpacing: "0.05em",
+      padding: "0.55rem 1.2rem",
+      border: "1.5px solid var(--accent)",
+      borderRadius: "25px",
+      fontFamily: "var(--cute)",
+      fontSize: "0.75rem",
+      fontWeight: 600,
+      color: "var(--text)",
+      letterSpacing: "0.03em",
+      background: "var(--purple-light)",
       cursor: "default",
-      transition: "border-color 0.2s, color 0.2s, background 0.2s",
+      transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+      display: "inline-block",
     }}
     onMouseEnter={e => {
-      e.currentTarget.style.borderColor = "var(--accent)";
-      e.currentTarget.style.color = "var(--accent)";
-      e.currentTarget.style.background = "var(--accent-glow)";
+      e.currentTarget.style.borderColor = "var(--purple-dark)";
+      e.currentTarget.style.color = "var(--white)";
+      e.currentTarget.style.background = "var(--accent)";
+      e.currentTarget.style.transform = "translateY(-2px)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(169, 154, 214, 0.2)";
     }}
     onMouseLeave={e => {
-      e.currentTarget.style.borderColor = "var(--border)";
-      e.currentTarget.style.color = "var(--text-muted)";
-      e.currentTarget.style.background = "transparent";
+      e.currentTarget.style.borderColor = "var(--accent)";
+      e.currentTarget.style.color = "var(--text)";
+      e.currentTarget.style.background = "var(--purple-light)";
+      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.boxShadow = "none";
     }}
     >{label}</span>
   );
@@ -80,12 +87,12 @@ export default function Skills() {
             <h2 style={{
               fontFamily: "var(--serif)",
               fontSize: "clamp(2rem, 3.5vw, 3rem)",
-              fontWeight: 300,
-              color: "var(--white)",
-              lineHeight: 1.18,
-              letterSpacing: "-0.01em",
+              fontWeight: 600,
+              color: "var(--text)",
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
             }}>
-              Technical<br /><em style={{ fontStyle: "italic", color: "var(--accent)" }}>Expertise</em>
+              Technical<br /><em style={{ fontStyle: "italic", color: "var(--purple-dark)", fontWeight: 400 }}>Expertise</em>
             </h2>
           </div>
 
@@ -93,12 +100,13 @@ export default function Skills() {
             {skills.map(({ category, items }) => (
               <div key={category}>
                 <div style={{
-                  fontFamily: "var(--mono)",
-                  fontSize: "0.64rem",
-                  letterSpacing: "0.25em",
+                  fontFamily: "var(--cute)",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: "var(--accent)",
+                  color: "var(--purple-dark)",
                   marginBottom: "1rem",
+                  fontWeight: 700,
                 }}>{category}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                   {items.map(item => <Pill key={item} label={item} />)}
