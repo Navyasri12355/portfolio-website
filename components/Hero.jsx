@@ -183,7 +183,7 @@ export default function Hero() {
 
           {/* Right column - Key highlights */}
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <div style={{
+            <motion.div {...fadeUp(0.2)} style={{
               padding: "1.5rem",
               background: "var(--purple-light)",
               borderRadius: "12px",
@@ -195,9 +195,9 @@ export default function Hero() {
               <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
                 AI/ML systems, Federated Learning, Vision-Language Models, Agentic AI, and ethical AI design
               </p>
-            </div>
+            </motion.div>
 
-            <div style={{
+            <motion.div {...fadeUp(0.3)} style={{
               padding: "1.5rem",
               background: "var(--purple-light)",
               borderRadius: "12px",
@@ -209,9 +209,9 @@ export default function Hero() {
               <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
                 Building responsible, scalable systems for real-world impact
               </p>
-            </div>
+            </motion.div>
 
-            <div style={{
+            <motion.div {...fadeUp(0.4)} style={{
               padding: "1.5rem",
               background: "var(--purple-light)",
               borderRadius: "12px",
@@ -223,7 +223,7 @@ export default function Hero() {
               <p style={{ fontSize: "0.95rem", color: "var(--text)", lineHeight: 1.6, fontWeight: 500 }}>
                 3 internships in AI/ML, from early-stage startups to defense tech
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
