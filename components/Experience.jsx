@@ -185,7 +185,7 @@ export default function Experience() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            04 - Experience
+            04: Experience
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",

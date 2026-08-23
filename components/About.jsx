@@ -25,7 +25,7 @@ export default function About() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            01 — About
+            01: About
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",

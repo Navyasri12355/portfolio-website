@@ -26,7 +26,7 @@ export default function Contact() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            05 - Contact
+            05: Contact
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",

@@ -365,7 +365,7 @@ export default function Projects() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            03 — Projects
+            03: Projects
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",

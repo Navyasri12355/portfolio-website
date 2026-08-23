@@ -36,7 +36,7 @@ export default function Publications() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            05 — Publications
+            05: Publications
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",

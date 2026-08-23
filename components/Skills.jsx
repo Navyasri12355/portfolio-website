@@ -241,7 +241,7 @@ export default function Skills() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            02 — Skills
+            02: Skills
           </motion.div>
           <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
