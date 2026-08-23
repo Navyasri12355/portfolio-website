@@ -4,6 +4,25 @@ import Section from "./Section";
 
 const projects = [
   {
+    title: "AI Token Optimizer",
+    desc: "A cloud-native system for predicting LLM token usage, estimating request cost, and optimizing prompts to reduce token consumption, deployed across Azure with a Spark/Databricks training pipeline and real-time observability.",
+    hasDemo: true,
+    githubUrl: "https://github.com/Navyasri12355/ai-token-optimizer/tree/bdt-integration",
+    demoVideoUrl: "https://www.youtube.com/embed/9WUnEu_jdLo?si=RFRXKXB3j6H6H2Sv",
+    details: {
+      technologies: ["Python", "FastAPI", "React + Vite", "Apache Spark (Databricks)", "Azure Blob Storage", "Azure Container Apps", "Azure Container Registry", "Elasticsearch + Kibana", "Streamlit (legacy)"],
+      features: [
+        "Token prediction engine estimating input, output, and total token usage for a given prompt across 15 LLMs spanning 3 providers",
+        "Prompt optimizer that reduces unnecessary wording while preserving intent, achieving 20-26% token reduction",
+        "Spark-based preprocessing and model training pipeline on Azure Databricks, writing raw data, processed parquet, and trained model artifacts to Azure Blob Storage",
+        "FastAPI backend on Azure Container Apps that loads trained model artifacts from Blob Storage at runtime into a local cache for low-latency inference",
+        "Real-time observability via Elasticsearch/Kibana dashboards tracking inference metrics, training runs, pipeline throughput, and cumulative cost savings",
+      ],
+      challenges: "Decoupling the training pipeline from the serving layer so the FastAPI backend could load Spark-trained model artifacts from Azure Blob Storage at runtime without redeploying the API. Also designing a monitoring layer that captured real (not synthetic) metrics across three distinct stages - inference, training, and data processing - into separate Elasticsearch data views for clean Kibana visualization.",
+      outcome: "Achieved 20-26% token reduction and R² up to 0.994 across supported models, with a production-style deployment spanning Azure Container Apps, Databricks, Blob Storage, and an ELK monitoring stack - reducing prompt costs while keeping full visibility into model and pipeline performance.",
+    },
+  },
+  {
     title: "AI-Powered Market Intelligence Platform",
     desc: "A multi-agent AI platform delivering real-time NSE/BSE market intelligence for Indian retail investors, featuring signal discovery, chart analysis, portfolio diagnostics, and a streaming market chat interface.",
     hasDemo: true,
@@ -188,8 +207,8 @@ function Modal({ project, onClose }) {
       onClick={onClose}
       style={{
         position: "fixed", inset: 0,
-        background: "rgba(45, 36, 64, 0.85)",
-        backdropFilter: "blur(12px)",
+        background: "rgba(0, 0, 0, 0.9)",
+        backdropFilter: "blur(8px)",
         display: "flex", alignItems: "center", justifyContent: "center",
         zIndex: 200, padding: "1.5rem",
       }}
@@ -197,52 +216,53 @@ function Modal({ project, onClose }) {
       <div
         onClick={e => e.stopPropagation()}
         style={{
-          background: "var(--surface)",
-          border: "1.5px solid var(--border-light)",
-          maxWidth: "680px", width: "100%",
-          maxHeight: "88vh", overflowY: "auto",
-          padding: "2.5rem",
-          borderRadius: "8px",
-          boxShadow: "0 20px 60px rgba(168, 154, 214, 0.15)",
+          background: "var(--glass-bg)",
+          backdropFilter: "var(--glass-blur)",
+          border: "1px solid var(--glass-border)",
+          maxWidth: "650px", width: "100%",
+          maxHeight: "85vh", overflowY: "auto",
+          padding: "2rem",
+          borderRadius: "12px",
+          boxShadow: "var(--glass-shadow)",
         }}
       >
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
-          <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", fontWeight: 600, color: "var(--text)", flex: 1, paddingRight: "1rem", lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.5rem", fontWeight: 600, color: "var(--text)", flex: 1, paddingRight: "1rem", lineHeight: 1.3 }}>
             {project.title}
           </h3>
           <button onClick={onClose} style={{ background: "none", border: "none", color: "var(--text-dim)", fontSize: "1.5rem", cursor: "pointer", lineHeight: 1, flexShrink: 0 }}>×</button>
         </div>
 
-        <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.95, marginBottom: "1.8rem", fontWeight: 400 }}>{project.desc}</p>
+        <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.85, marginBottom: "1.5rem", fontWeight: 400 }}>{project.desc}</p>
 
         {/* Demo */}
         {project.demoVideoUrl && (
-          <div style={{ marginBottom: "2rem" }}>
-            <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 700 }}>Demo Video</div>
-            <div style={{ position: "relative", paddingBottom: "56.25%", borderRadius: "2px", overflow: "hidden" }}>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Demo Video</div>
+            <div style={{ position: "relative", paddingBottom: "56.25%", borderRadius: "4px", overflow: "hidden", background: "var(--surface2)" }}>
               <iframe src={project.demoVideoUrl} title={project.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
             </div>
           </div>
         )}
 
         {/* Technologies */}
-        <div style={{ marginBottom: "1.8rem" }}>
-          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 700 }}>Technologies</div>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Technologies</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
             {project.details.technologies.map(t => (
-              <span key={t} style={{ padding: "0.35rem 0.85rem", border: "1px solid var(--border)", borderRadius: "16px", fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--text-muted)", fontWeight: 500 }}>{t}</span>
+              <span key={t} style={{ padding: "0.35rem 0.75rem", border: "1px solid var(--border)", borderRadius: "4px", fontFamily: "var(--cute)", fontSize: "0.7rem", color: "var(--text-muted)", fontWeight: 500 }}>{t}</span>
             ))}
           </div>
         </div>
 
         {/* Features */}
-        <div style={{ marginBottom: "1.8rem" }}>
-          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 700 }}>Key Features</div>
-          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Key Features</div>
+          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             {project.details.features.map((f, i) => (
-              <li key={i} style={{ fontSize: "0.9rem", color: "var(--text-muted)", display: "flex", gap: "0.75rem", lineHeight: 1.8, fontWeight: 400 }}>
-                <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: "0.1rem", fontSize: "0.5rem" }}>◆</span>
+              <li key={i} style={{ fontSize: "0.9rem", color: "var(--text-muted)", display: "flex", gap: "0.75rem", lineHeight: 1.75, fontWeight: 400 }}>
+                <span style={{ color: "var(--accent)", flexShrink: 0, marginTop: "0.15rem", fontSize: "0.4rem" }}>◆</span>
                 {f}
               </li>
             ))}
@@ -250,21 +270,21 @@ function Modal({ project, onClose }) {
         </div>
 
         {/* Challenges */}
-        <div style={{ marginBottom: "1.8rem" }}>
-          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 700 }}>Challenges</div>
-          <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.9, fontWeight: 400 }}>{project.details.challenges}</p>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Challenges</div>
+          <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.85, fontWeight: 400 }}>{project.details.challenges}</p>
         </div>
 
         {/* Outcome */}
-        <div style={{ marginBottom: "2rem" }}>
-          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 700 }}>Outcome</div>
-          <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.9, fontWeight: 400 }}>{project.details.outcome}</p>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Outcome</div>
+          <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.85, fontWeight: 400 }}>{project.details.outcome}</p>
         </div>
 
         {/* GitHub */}
-        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.25rem" }}>
           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--cute)", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.2s", fontWeight: 700 }}
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--cute)", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", textDecoration: "none", transition: "color 0.2s", fontWeight: 600 }}
             onMouseEnter={e => e.currentTarget.style.color = "var(--accent)"}
             onMouseLeave={e => e.currentTarget.style.color = "var(--text-muted)"}
           >
@@ -284,88 +304,94 @@ export default function Projects() {
 
   return (
     <>
-      <div style={{ width: "100%", height: "1px", background: "var(--border)", maxWidth: "1200px", margin: "0 auto" }} />
-      <Section id="projects">
-        <div style={{
-          fontFamily: "var(--cute)",
-          fontSize: "0.75rem",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--purple-dark)",
-          marginBottom: "1rem",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.75rem",
-          fontWeight: 700,
-        }}>
-          03 — Projects
-          <span style={{ display: "inline-block", width: "40px", height: "2px", background: "var(--purple-dark)", opacity: 0.6 }} />
-        </div>
-        <h2 style={{
-          fontFamily: "var(--serif)",
-          fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          fontWeight: 600,
-          color: "var(--text)",
-          lineHeight: 1.15,
-          letterSpacing: "-0.02em",
-          marginBottom: "3rem",
-        }}>
-          Selected<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Work</em>
-        </h2>
+      <Section id="projects" style={{
+        background: "var(--gradient-surface)",
+        position: "relative",
+      }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{
+            fontFamily: "var(--cute)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+            marginBottom: "1.5rem",
+            fontWeight: 600,
+          }}>
+            03 — Projects
+          </div>
+          <h2 style={{
+            fontFamily: "var(--serif)",
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 600,
+            color: "var(--text)",
+            lineHeight: 1.2,
+            letterSpacing: "-0.03em",
+            marginBottom: "3rem",
+          }}>
+            Selected<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Work</em>
+          </h2>
 
-        {/* Grid with rounded cards */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-          gap: "1.5rem",
-        }}>
-          {projects.map((p, i) => (
-            <div
-              key={i}
-              onClick={() => setSelected(p)}
-              style={{
-                background: "var(--surface2)",
-                padding: "2.5rem",
-                cursor: "pointer",
-                position: "relative",
-                transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                borderRadius: "8px",
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = "var(--accent-dim)";
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 12px 24px rgba(201, 184, 228, 0.2)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = "var(--surface2)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              {p.hasDemo && (
-                <span style={{
-                  position: "absolute", top: "2rem", right: "2rem",
-                  fontFamily: "var(--mono)", fontSize: "0.58rem",
-                  letterSpacing: "0.12em", color: "var(--white)",
-                  background: "var(--accent)",
-                  padding: "0.3rem 0.65rem",
-                  borderRadius: "4px",
-                }}>▶ Demo</span>
-              )}
-              <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", color: "var(--text-dim)", letterSpacing: "0.1em", marginBottom: "1.5rem", fontWeight: 600 }}>
-                {String(i + 1).padStart(3, "0")}
+          {/* Grid with rounded cards */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: "1.5rem",
+          }}>
+            {projects.map((p, i) => (
+              <div
+                key={i}
+                onClick={() => setSelected(p)}
+                style={{
+                  background: "var(--glass-bg)",
+                  backdropFilter: "var(--glass-blur)",
+                  padding: "2rem",
+                  cursor: "pointer",
+                  position: "relative",
+                  transition: "all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                  borderRadius: "12px",
+                  border: "1px solid var(--glass-border)",
+                  boxShadow: "var(--glass-shadow)",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "var(--accent-dim)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = "0 12px 40px rgba(139, 92, 246, 0.2)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "var(--glass-bg)";
+                  e.currentTarget.style.borderColor = "var(--glass-border)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "var(--glass-shadow)";
+                }}
+              >
+                {p.hasDemo && (
+                  <span style={{
+                    position: "absolute", top: "1.5rem", right: "1.5rem",
+                    fontFamily: "var(--cute)", fontSize: "0.6rem",
+                    letterSpacing: "0.08em", color: "var(--white)",
+                    background: "var(--accent)",
+                    padding: "0.25rem 0.6rem",
+                    borderRadius: "3px",
+                    fontWeight: 600,
+                  }}>▶ Demo</span>
+                )}
+                <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", color: "var(--text-dim)", letterSpacing: "0.1em", marginBottom: "1.25rem", fontWeight: 600 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.25rem", fontWeight: 600, color: "var(--text)", marginBottom: "0.75rem", lineHeight: 1.3 }}>
+                  {p.title}
+                </h3>
+                <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.75, marginBottom: "1.5rem", fontWeight: 400 }}>
+                  {p.desc}
+                </p>
+                <span style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600 }}>
+                  View Details →
+                </span>
               </div>
-              <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.35rem", fontWeight: 600, color: "var(--text)", marginBottom: "0.9rem", lineHeight: 1.3 }}>
-                {p.title}
-              </h3>
-              <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.85, marginBottom: "1.8rem", fontWeight: 400 }}>
-                {p.desc}
-              </p>
-              <span style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 700 }}>
-                View Details →
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
