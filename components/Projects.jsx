@@ -140,13 +140,13 @@ const projects = [
       ],
       features: [
         "Implementing a 7-category hallucination taxonomy (Object Existence, Attribute, Relational, Counting, Existence Negation, Cross-modal Consistency, Bias & Interference) grounded in 32 papers",
-        "Developing fine-grained subcategory scoring - e.g. H1a random, H1b popular, H1c adversarial — to enable per-failure-mode diagnostics across models",
+        "Developing fine-grained subcategory scoring - e.g. H1a random, H1b popular, H1c adversarial - to enable per-failure-mode diagnostics across models",
         "Utilizing adversarial sampling via the COCO co-occurrence matrix to generate semantically plausible absent-object probes (e.g. microwave/oven, keyboard/mouse)",
         "Defining H7 Bias & Interference - a novel category covering language prior overrides, OCR bias, and text/image interference missing from existing benchmarks",
-        "Building a unified dataset format with per-question metadata (category, subcategory, difficulty, sampling strategy) targeting 2,000–5,000 QA pairs across COCO + Visual Genome",
+        "Building a unified dataset format with per-question metadata (category, subcategory, difficulty, sampling strategy) targeting 2,000-5,000 QA pairs across COCO + Visual Genome",
       ],
       challenges: "Existing benchmarks like POPE and CHAIR cover only one or two hallucination types in isolation, making cross-model comparison across failure modes difficult. The core challenge lies in designing a consistent image base and question generation pipeline that spans all 7 categories while ensuring adversarial probes remain visually plausible and category boundaries stay well-defined.",
-      outcome: "Developing a more comprehensive evaluation framework than any single prior benchmark — the only one to cover all 7 hallucination categories simultaneously. With the taxonomy and dataset generation pipeline nearing completion, the project is moving into model inference stages for LLaVA-1.5, InstructBLIP, GPT-4V, and Gemini Vision.",
+      outcome: "Developing a more comprehensive evaluation framework than any single prior benchmark - the only one to cover all 7 hallucination categories simultaneously. With the taxonomy and dataset generation pipeline nearing completion, the project is moving into model inference stages for LLaVA-1.5, InstructBLIP, GPT-4V, and Gemini Vision.",
     },
   },
   {
