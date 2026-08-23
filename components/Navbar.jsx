@@ -1,19 +1,25 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/skills", label: "Skills" },
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/publications", label: "Publications" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -26,48 +32,52 @@ export default function Navbar() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "1.4rem 4rem",
-      borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-      background: scrolled ? "rgba(248, 247, 252, 0.92)" : "transparent",
-      backdropFilter: scrolled ? "blur(20px)" : "none",
-      transition: "all 0.4s ease",
+      padding: "1.5rem 3rem",
+      borderBottom: scrolled ? "1px solid var(--glass-border)" : "1px solid transparent",
+      background: scrolled ? "var(--glass-bg)" : "transparent",
+      backdropFilter: scrolled ? "var(--glass-blur)" : "none",
+      boxShadow: scrolled ? "var(--glass-shadow)" : "none",
+      transition: "all 0.3s ease",
     }}>
-      <a href="#hero" style={{
+      <Link href="/" style={{
         fontFamily: "var(--cute)",
-        fontSize: "0.8rem",
-        letterSpacing: "0.1em",
-        color: "var(--purple-dark)",
+        fontSize: "0.75rem",
+        letterSpacing: "0.15em",
+        color: "var(--text)",
         textTransform: "uppercase",
         textDecoration: "none",
-        fontWeight: 700,
-      }}>NP</a>
+        fontWeight: 600,
+      }}>NP</Link>
 
-      <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
+      <ul style={{ display: "flex", gap: "2rem", listStyle: "none", alignItems: "center" }}>
         {links.map(({ href, label }) => (
           <li key={href}>
-            <a href={href} style={{
+            <Link href={href} style={{
               fontFamily: "var(--cute)",
               fontSize: "0.7rem",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "var(--text)",
+              color: pathname === href ? "var(--accent)" : "var(--text-muted)",
               textDecoration: "none",
-              transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
-              paddingBottom: "0.25rem",
-              borderBottom: "1px solid transparent",
-              fontWeight: 600,
+              transition: "all 0.2s ease",
+              fontWeight: pathname === href ? 600 : 500,
             }}
             onMouseEnter={e => {
-              e.target.style.color = "var(--accent)";
-              e.target.style.borderColor = "var(--accent)";
+              if (pathname !== href) {
+                e.target.style.color = "var(--accent)";
+              }
             }}
             onMouseLeave={e => {
-              e.target.style.color = "var(--text)";
-              e.target.style.borderColor = "transparent";
+              if (pathname !== href) {
+                e.target.style.color = "var(--text-muted)";
+              }
             }}
-            >{label}</a>
+            >{label}</Link>
           </li>
         ))}
+        <li>
+          <ThemeToggle />
+        </li>
       </ul>
     </nav>
   );
