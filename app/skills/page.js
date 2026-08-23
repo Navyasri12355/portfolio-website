@@ -1,13 +1,13 @@
-import Hero from "@/components/Hero";
-import FloatingBubbles from "@/components/FloatingBubbles";
+import Skills from "@/components/Skills";
 import Navbar from "@/components/Navbar";
+import FloatingBubbles from "@/components/FloatingBubbles";
 
-export default function Home() {
+export default function SkillsPage() {
   return (
     <main style={{ background: "var(--bg)" }}>
       <Navbar />
       <FloatingBubbles />
-      <Hero />
+      <Skills />
     </main>
   );
 }
