@@ -92,7 +92,7 @@ const projects = [
     hasDemo: true,
     demoUrl: "https://agentic-aml-system.vercel.app/",
     githubUrl: "https://github.com/Navyasri12355/agentic-aml-system/tree/Suraj-has-risen",
-    demoVideoUrl: "",
+    demoVideoUrl: "https://www.youtube.com/embed/vqrwl5XwAis?si=MLmgJ6eN0iP3SWsX",
     details: {
       technologies: ["Python", "LangGraph", "Isolation Forest", "Graph Analysis", "Machine Learning", "Rule-Based Detection", "Financial Transaction Analytics"],
       features: [
