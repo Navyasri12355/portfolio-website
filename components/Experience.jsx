@@ -1,6 +1,13 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "./Section";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay },
+});
 
 const workExperience = [
   {
@@ -54,8 +61,6 @@ const workExperience = [
 
 const achievements = [
   "Advanced to the semi-finals in the DSU TechFlix Hackathon",
-  "Participated in RVCE Gen AI Hackathon",
-  "Participated in Smart India Hackathon",
 ];
 
 function ExperienceModal({ experience, onClose }) {
@@ -171,7 +176,7 @@ export default function Experience() {
         position: "relative",
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <div style={{
+          <motion.div {...fadeUp(0)} style={{
             fontFamily: "var(--cute)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -180,9 +185,9 @@ export default function Experience() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            04 — Experience
-          </div>
-          <h2 style={{
+            04 - Experience
+          </motion.div>
+          <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 600,
@@ -192,12 +197,12 @@ export default function Experience() {
             marginBottom: "3rem",
           }}>
             Work &amp;<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Achievements</em>
-          </h2>
+          </motion.h2>
 
           {/* Experience list */}
           <div style={{ marginBottom: "3rem" }}>
             {workExperience.map((exp, i) => (
-                <div key={i} style={{
+                <motion.div key={i} {...fadeUp(0.2 + i * 0.1)} style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 2fr",
                   gap: "3rem",
@@ -266,7 +271,7 @@ export default function Experience() {
                     View Details
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 

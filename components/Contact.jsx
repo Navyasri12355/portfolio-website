@@ -1,5 +1,12 @@
 "use client";
+import { motion } from "framer-motion";
 import Section from "./Section";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay },
+});
 
 export default function Contact() {
   return (
@@ -10,7 +17,7 @@ export default function Contact() {
         textAlign: "center",
       }}>
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-          <div style={{
+          <motion.div {...fadeUp(0)} style={{
             fontFamily: "var(--cute)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -19,9 +26,9 @@ export default function Contact() {
             marginBottom: "1.5rem",
             fontWeight: 600,
           }}>
-            05 — Contact
-          </div>
-          <h2 style={{
+            05 - Contact
+          </motion.div>
+          <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 600,
@@ -31,13 +38,14 @@ export default function Contact() {
             marginBottom: "1.5rem",
           }}>
             Let's<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Connect</em>
-          </h2>
+          </motion.h2>
 
-          <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2.5rem", lineHeight: 1.85, fontWeight: 400 }}>
-            Feel free to reach out for opportunities, collaborations, or discussions.
-          </p>
+          <motion.p {...fadeUp(0.2)} style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2.5rem", lineHeight: 1.85, fontWeight: 400 }}>
+            I'm drawn to taking AI beyond experimentation into reliable, scalable products, working across machine learning, computer vision, Generative AI, and agentic workflows. I enjoy exploring new tools and frameworks that enable better solutions and bring ideas into production. If you're working on similar ideas, I'd love to connect and collaborate.
+          </motion.p>
 
-          <a
+          <motion.a
+            {...fadeUp(0.3)}
             href="mailto:pulipatinavyasri@gmail.com"
             style={{
               fontFamily: "var(--serif)",
@@ -62,9 +70,9 @@ export default function Contact() {
             }}
           >
             pulipatinavyasri@gmail.com
-          </a>
+          </motion.a>
 
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <motion.div {...fadeUp(0.4)} style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             {[
               {
                 label: "LinkedIn",
@@ -84,9 +92,10 @@ export default function Contact() {
                   </svg>
                 ),
               },
-            ].map(({ label, href, icon }) => (
-              <a
+            ].map(({ label, href, icon }, index) => (
+              <motion.a
                 key={label}
+                {...fadeUp(0.5 + index * 0.1)}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -124,9 +133,9 @@ export default function Contact() {
               >
                 {icon}
                 {label}
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </Section>
     </>

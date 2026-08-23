@@ -1,5 +1,12 @@
 "use client";
+import { motion } from "framer-motion";
 import Section from "./Section";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay },
+});
 
 const publications = [
   {
@@ -20,7 +27,7 @@ export default function Publications() {
         position: "relative",
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <div style={{
+          <motion.div {...fadeUp(0)} style={{
             fontFamily: "var(--cute)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -30,8 +37,8 @@ export default function Publications() {
             fontWeight: 600,
           }}>
             05 — Publications
-          </div>
-          <h2 style={{
+          </motion.div>
+          <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 600,
@@ -41,11 +48,11 @@ export default function Publications() {
             marginBottom: "3rem",
           }}>
             Research<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Publications</em>
-          </h2>
+          </motion.h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
             {publications.map((pub, i) => (
-              <div key={i} style={{
+              <motion.div key={i} {...fadeUp(0.2 + i * 0.1)} style={{
                 padding: "2rem",
                 borderRadius: "12px",
                 background: "var(--glass-bg)",
@@ -136,7 +143,7 @@ export default function Publications() {
                     <line x1="10" y1="14" x2="21" y2="3" />
                   </svg>
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

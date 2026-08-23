@@ -1,6 +1,13 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "./Section";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay },
+});
 
 const skills = [
   {
@@ -11,8 +18,9 @@ const skills = [
         <polyline points="8 6 2 12 8 18" />
       </svg>
     ),
-    items: ["Python", "R", "C", "SQL"],
+    items: ["Python", "C", "R", "SQL"],
   },
+
   {
     category: "Core CS",
     icon: (
@@ -22,8 +30,57 @@ const skills = [
         <line x1="12" y1="17" x2="12" y2="21" />
       </svg>
     ),
-    items: ["DSA", "OOP", "Operating Systems", "DBMS", "Computer Networks"],
+    items: [
+      "DSA",
+      "OOP",
+      "Operating Systems",
+      "DBMS",
+      "Computer Networks",
+    ],
   },
+
+  {
+    category: "AI/ML",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    ),
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "Scikit-learn",
+      "XGBoost",
+      "LangGraph",
+      "MLflow",
+      "Prefect",
+    ],
+  },
+
+  {
+    category: "ML Concepts",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M2 12h20M2 12l5-5m-5 5l5 5" />
+        <path d="M22 12l-5-5m5 5l-5 5" />
+      </svg>
+    ),
+    items: [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Deep Learning",
+      "Neural Networks",
+      "CNNs",
+      "RNNs",
+      "Transformers",
+      "RAG",
+      "Computer Vision",
+      "NLP",
+      "Probability & Statistics",
+    ],
+  },
+
   {
     category: "Backend",
     icon: (
@@ -34,27 +91,84 @@ const skills = [
         <line x1="6" y1="18" x2="6.01" y2="18" />
       </svg>
     ),
-    items: ["FastAPI", "REST APIs", "Redis"],
+    items: [
+      "FastAPI",
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "Redis",
+    ],
   },
+
   {
-    category: "DevOps/Cloud",
+    category: "Frontend",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <line x1="9" y1="9" x2="9" y2="21" />
+      </svg>
+    ),
+    items: [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+    ],
+  },
+
+  {
+    category: "Databases",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v7c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+        <path d="M3 12v7c0 1.66 4.03 3 9 3s9-1.34 9-3v-7" />
+      </svg>
+    ),
+    items: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+    ],
+  },
+
+  {
+    category: "Cloud & DevOps",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
       </svg>
     ),
-    items: ["Docker", "Kubernetes", "Git", "Azure"],
+    items: [
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "GitHub",
+      "Azure",
+      "CI/CD",
+    ],
   },
+
   {
-    category: "AI/ML",
+    category: "Data & Visualization",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
-        <path d="M12 6v6l4 2" />
+        <line x1="4" y1="19" x2="4" y2="5" />
+        <line x1="4" y1="19" x2="20" y2="19" />
+        <polyline points="7 15 10 11 13 14 18 7" />
       </svg>
     ),
-    items: ["Scikit-learn", "LangGraph", "MLflow", "Prefect", "RAG", "XGBoost"],
+    items: [
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Jupyter",
+    ],
   },
+
   {
     category: "Soft Skills",
     icon: (
@@ -65,7 +179,12 @@ const skills = [
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
-    items: ["Teamwork", "Time Management", "Leadership", "Effective Communication", "Critical Thinking"],
+    items: [
+      "Teamwork",
+      "Leadership",
+      "Effective Communication",
+      "Critical Thinking",
+    ],
   },
 ];
 
@@ -113,7 +232,7 @@ export default function Skills() {
         position: "relative",
       }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <div style={{
+          <motion.div {...fadeUp(0)} style={{
             fontFamily: "var(--cute)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -123,8 +242,8 @@ export default function Skills() {
             fontWeight: 600,
           }}>
             02 — Skills
-          </div>
-          <h2 style={{
+          </motion.div>
+          <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 600,
@@ -134,12 +253,13 @@ export default function Skills() {
             marginBottom: "2.5rem",
           }}>
             Technical<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Expertise</em>
-          </h2>
+          </motion.h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
             {skills.map(({ category, icon, items }, index) => (
-              <div
+              <motion.div
                 key={category}
+                {...fadeUp(0.2 + index * 0.1)}
                 style={{
                   padding: "1.5rem",
                   borderRadius: "12px",
@@ -202,7 +322,7 @@ export default function Skills() {
                     {items.length} skills
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

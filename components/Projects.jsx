@@ -1,6 +1,13 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "./Section";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay },
+});
 
 const projects = [
   {
@@ -22,6 +29,25 @@ const projects = [
       outcome: "Achieved 20-26% token reduction and R² up to 0.994 across supported models, with a production-style deployment spanning Azure Container Apps, Databricks, Blob Storage, and an ELK monitoring stack - reducing prompt costs while keeping full visibility into model and pipeline performance.",
     },
   },
+  {
+  title: "Offline AI OS",
+  desc: "A privacy-first, fully local AI platform combining Ollama, ONNX Runtime, and ChromaDB to deliver offline LLM inference, local RAG, document processing, and tool-using agents without cloud dependencies.",
+  hasDemo: true,
+  githubUrl: "https://github.com/Navyasri12355/offline-ai-os",
+  demoVideoUrl: "https://www.youtube.com/embed/tCKE6QgmxIo?si=foptCKQhYalMys_-",
+  details: {
+    technologies: ["Python", "Ollama", "ONNX Runtime", "ChromaDB", "Local RAG", "LLM Agents", "Document Processing"],
+    features: [
+      "Fully offline LLM inference using Ollama, keeping prompts, documents, embeddings, and responses entirely on-device",
+      "ONNX Runtime embedding pipeline optimized for AMD Ryzen CPUs, achieving 18.85 ms average embedding latency",
+      "Local RAG pipeline that processes, chunks, embeds, indexes, and retrieves information from user-provided documents using ChromaDB",
+      "Tool-using agent capable of interacting with Python execution, local files, and presentation-generation workflows",
+      "Integrated document processing pipeline for turning local files into searchable knowledge for context-aware AI responses",
+    ],
+    challenges: "Designing an end-to-end AI stack that remained completely offline while still supporting RAG, tool orchestration, document processing, and low-latency embeddings. A key challenge was optimizing the embedding pipeline for CPU-only execution on AMD Ryzen without relying on cloud inference or GPU acceleration.",
+    outcome: "Built a fully local AI platform with no cloud dependencies, achieving 18.85 ms average CPU embedding latency on AMD Ryzen while combining local LLM inference, RAG, document intelligence, and tool-using agents into a single privacy-first system.",
+  },
+},
   {
     title: "AI-Powered Market Intelligence Platform",
     desc: "A multi-agent AI platform delivering real-time NSE/BSE market intelligence for Indian retail investors, featuring signal discovery, chart analysis, portfolio diagnostics, and a streaming market chat interface.",
@@ -61,19 +87,23 @@ const projects = [
     },
   },
   {
-    title: "Agentic Emergency Triage System",
-    desc: "An AI-driven agentic triage system that assists in medical decision-making by classifying patient risk levels and recommending appropriate care pathways using explainable and ethical AI principles.",
-    hasDemo: false,
-    githubUrl: "https://github.com/Navyasri12355/agentic-triage-system",
+    title: "Agentic AML Investigation System",
+    desc: "An agentic anti-money laundering investigation pipeline processing 4.37M financial transactions, combining machine-learning anomaly detection, graph-based transaction analysis, and rule-driven laundering pattern detection with LangGraph-based orchestration.",
+    hasDemo: true,
+    demoUrl: "https://agentic-aml-system.vercel.app/",
+    githubUrl: "https://github.com/Navyasri12355/agentic-aml-system/tree/Suraj-has-risen",
+    demoVideoUrl: "",
     details: {
-      technologies: ["Python", "FastAPI", "Machine Learning", "Rule-Based Systems", "Explainable AI (XAI)", "MLflow"],
+      technologies: ["Python", "LangGraph", "Isolation Forest", "Graph Analysis", "Machine Learning", "Rule-Based Detection", "Financial Transaction Analytics"],
       features: [
-        "Automated patient triage using AI agents to assess severity and risk levels",
-        "Hybrid decision-making combining rule-based medical logic with ML predictions",
-        "Explainable triage outputs with reasoning for each risk classification",
+        "Isolation Forest anomaly detection pipeline processing 4.37M financial transactions to identify potentially suspicious activity",
+        "Graph-based transaction analysis for uncovering relationships and movement patterns across interconnected financial entities",
+        "Rule-driven detection of laundering patterns including smurfing, circular flow, draining, scattering, and funneling",
+        "LangGraph state-machine orchestration layer connecting graph, feature, pattern, and risk agents with conditional routing",
+        "Node-level error handling and risk-based investigation workflows that generate risk tiers and downstream routing decisions",
       ],
-      challenges: "Designing a reliable agentic workflow that balances clinical rules with probabilistic ML outputs while maintaining transparency, fairness, and safety in medical decision-making.",
-      outcome: "The system demonstrates effective and interpretable patient triage, enabling faster and more consistent risk assessment. It serves as a foundation for ethical AI-assisted clinical decision support.",
+      challenges: "Designing an agentic investigation workflow capable of coordinating multiple analytical stages across millions of transactions while preserving reliable state transitions and failure handling. The system also had to combine statistical anomalies, graph relationships, and deterministic laundering patterns into a unified risk assessment.",
+      outcome: "Achieved 88% recall, 85% precision, and 0.86 F1 while processing 4.37M transactions, producing risk tiers and investigation routing decisions across five distinct money-laundering patterns through a coordinated LangGraph agent workflow.",
     },
   },
   {
@@ -90,6 +120,49 @@ const projects = [
       ],
       challenges: "Mitigating model weight divergence across heterogeneous data sources and orchestrating complex asynchronous communications between the central server and multiple decentralized clients.",
       outcome: "Created a production-grade Federated Learning ecosystem that bridges secure, decentralized training with enterprise MLOps standards for scalable and privacy-preserving AI development.",
+    },
+  },
+  {
+    title: "VLM Hallucination Benchmark",
+    desc: "A structured benchmark for evaluating hallucination behavior across Vision-Language Models, covering 7 hallucination categories with fine-grained diagnostic breakdowns grounded in 32 research papers.",
+    hasDemo: false,
+    githubUrl: "https://github.com/Navyasri12355/vlm-hallucination-benchmark",
+    details: {
+      technologies: [
+        "Python",
+        "MS-COCO val2017",
+        "Visual Genome",
+        "LLaVA-1.5 (7B)",
+        "InstructBLIP (7B)",
+        "GPT-4V / Gemini Vision",
+        "Kaggle / Colab (T4 GPU)",
+        "4-bit Quantization",
+      ],
+      features: [
+        "Implementing a 7-category hallucination taxonomy (Object Existence, Attribute, Relational, Counting, Existence Negation, Cross-modal Consistency, Bias & Interference) grounded in 32 papers",
+        "Developing fine-grained subcategory scoring - e.g. H1a random, H1b popular, H1c adversarial — to enable per-failure-mode diagnostics across models",
+        "Utilizing adversarial sampling via the COCO co-occurrence matrix to generate semantically plausible absent-object probes (e.g. microwave/oven, keyboard/mouse)",
+        "Defining H7 Bias & Interference - a novel category covering language prior overrides, OCR bias, and text/image interference missing from existing benchmarks",
+        "Building a unified dataset format with per-question metadata (category, subcategory, difficulty, sampling strategy) targeting 2,000–5,000 QA pairs across COCO + Visual Genome",
+      ],
+      challenges: "Existing benchmarks like POPE and CHAIR cover only one or two hallucination types in isolation, making cross-model comparison across failure modes difficult. The core challenge lies in designing a consistent image base and question generation pipeline that spans all 7 categories while ensuring adversarial probes remain visually plausible and category boundaries stay well-defined.",
+      outcome: "Developing a more comprehensive evaluation framework than any single prior benchmark — the only one to cover all 7 hallucination categories simultaneously. With the taxonomy and dataset generation pipeline nearing completion, the project is moving into model inference stages for LLaVA-1.5, InstructBLIP, GPT-4V, and Gemini Vision.",
+    },
+  },
+  {
+    title: "Agentic Emergency Triage System",
+    desc: "An AI-driven agentic triage system that assists in medical decision-making by classifying patient risk levels and recommending appropriate care pathways using explainable and ethical AI principles.",
+    hasDemo: false,
+    githubUrl: "https://github.com/Navyasri12355/agentic-triage-system",
+    details: {
+      technologies: ["Python", "FastAPI", "Machine Learning", "Rule-Based Systems", "Explainable AI (XAI)", "MLflow"],
+      features: [
+        "Automated patient triage using AI agents to assess severity and risk levels",
+        "Hybrid decision-making combining rule-based medical logic with ML predictions",
+        "Explainable triage outputs with reasoning for each risk classification",
+      ],
+      challenges: "Designing a reliable agentic workflow that balances clinical rules with probabilistic ML outputs while maintaining transparency, fairness, and safety in medical decision-making.",
+      outcome: "The system demonstrates effective and interpretable patient triage, enabling faster and more consistent risk assessment. It serves as a foundation for ethical AI-assisted clinical decision support.",
     },
   },
   {
@@ -111,58 +184,6 @@ const projects = [
     },
   },
   {
-    title: "VLM Hallucination Benchmark",
-    desc: "A structured benchmark for evaluating hallucination behavior across Vision-Language Models, covering 7 hallucination categories with fine-grained diagnostic breakdowns grounded in 32 research papers.",
-    hasDemo: false,
-    githubUrl: "https://github.com/Navyasri12355/vlm-hallucination-benchmark",
-    details: {
-      technologies: [
-        "Python",
-        "MS-COCO val2017",
-        "Visual Genome",
-        "LLaVA-1.5 (7B)",
-        "InstructBLIP (7B)",
-        "GPT-4V / Gemini Vision",
-        "Kaggle / Colab (T4 GPU)",
-        "4-bit Quantization",
-      ],
-      features: [
-        "Implementing a 7-category hallucination taxonomy (Object Existence, Attribute, Relational, Counting, Existence Negation, Cross-modal Consistency, Bias & Interference) grounded in 32 papers",
-        "Developing fine-grained subcategory scoring — e.g. H1a random, H1b popular, H1c adversarial — to enable per-failure-mode diagnostics across models",
-        "Utilizing adversarial sampling via the COCO co-occurrence matrix to generate semantically plausible absent-object probes (e.g. microwave/oven, keyboard/mouse)",
-        "Defining H7 Bias & Interference — a novel category covering language prior overrides, OCR bias, and text/image interference missing from existing benchmarks",
-        "Building a unified dataset format with per-question metadata (category, subcategory, difficulty, sampling strategy) targeting 2,000–5,000 QA pairs across COCO + Visual Genome",
-      ],
-      challenges: "Existing benchmarks like POPE and CHAIR cover only one or two hallucination types in isolation, making cross-model comparison across failure modes difficult. The core challenge lies in designing a consistent image base and question generation pipeline that spans all 7 categories while ensuring adversarial probes remain visually plausible and category boundaries stay well-defined.",
-      outcome: "Developing a more comprehensive evaluation framework than any single prior benchmark — the only one to cover all 7 hallucination categories simultaneously. With the taxonomy and dataset generation pipeline nearing completion, the project is moving into model inference stages for LLaVA-1.5, InstructBLIP, GPT-4V, and Gemini Vision.",
-    },
-  },
-  {
-    title: "Clinical Evidence Copilot",
-    desc: "An agentic AI system for clinicians that provided real-time, evidence-backed medical insights by continuously ingesting and analyzing live research, clinical trials, and treatment guidelines.",
-    hasDemo: false,
-    githubUrl: "https://github.com/Navyasri12355/iitm-hack",
-    details: {
-      technologies: [
-        "Python",
-        "FastAPI",
-        "Pathway (Streaming Engine)",
-        "OpenAI API",
-        "Docker",
-        "WebSockets",
-      ],
-      features: [
-        "Implemented a real-time data ingestion layer using the Pathway framework to process streaming medical literature and document updates",
-        "Developed an agentic reasoning engine designed to handle multi-step medical queries with high precision and evidence grounding",
-        "Built a microservices-based architecture featuring FastAPI REST endpoints and WebSocket handlers for low-latency clinical communication",
-        "Integrated HIPAA-compliant logging and data validation models to ensure the system met healthcare security standards",
-        "Created a robust testing suite including property-based tests and coverage reporting to ensure reliability in a clinical decision-support context",
-      ],
-      challenges: "The primary technical hurdle was managing the real-time synchronization of large-scale medical datasets while maintaining low-latency responses. Additionally, ensuring cross-platform compatibility for the Pathway streaming engine required a sophisticated Docker and WSL2 deployment strategy.",
-      outcome: "Built a production-ready medical intelligence tool that bridged the gap between static research and active clinical practice. The project successfully demonstrated a functional ingestion and reasoning layer capable of providing high-confidence medical insights.",
-    },
-  },
-  {
     title: "Ayurvedic Clinical Bridge",
     desc: "An AI-powered system that connects allopathic medicine with Ayurvedic treatments, offering medicine mapping, disease-based recommendations, and safety analysis for informed integrative care.",
     hasDemo: false,
@@ -180,22 +201,6 @@ const projects = [
       ],
       challenges: "Procuring authentic and reliable Ayurvedic data sources from traditional texts, verified clinical studies, and standardized herbal formulations while ensuring data quality, accuracy, and clinical relevance for modern healthcare applications.",
       outcome: "Successfully created a comprehensive clinical decision-support system that bridges two medical systems, providing practitioners with detailed Ayurvedic alternatives, safety warnings, and evidence-based treatment recommendations for informed integrative healthcare decisions.",
-    },
-  },
-  {
-    title: "Voice-Activated System",
-    desc: "A powerful hands-free computer control system built with Python that enables users to operate their Windows OS through voice commands, featuring both internet-reliant and fully offline modes.",
-    hasDemo: false,
-    githubUrl: "https://github.com/Navyasri12355/Voice-Activated-System",
-    details: {
-      technologies: ["Python", "Spacy (NLP)", "Vosk (Offline Speech Recognition)", "Google Web Speech API", "OS Module (Windows Automation)", "SpeechRecognition Library"],
-      features: [
-        "Advanced dual-mode speech recognition: Online (Google Web Speech API) for high accuracy and Offline (Vosk) for privacy",
-        "Custom NLP Engine powered by Spacy with a trained TextCategorizer and NER to handle command variations robustly",
-        "Full desktop automation including application control (open/close), media playback, volume adjustment, and system power states (lock/sleep/shutdown)",
-      ],
-      challenges: "Developing a custom NLP model to accurately interpret diverse user commands and integrating offline speech recognition (Vosk) to ensure functionality without an internet connection.",
-      outcome: "Created a comprehensive voice assistant that enhances computer accessibility, allowing users to navigate the web and control system functions entirely hands-free.",
     },
   },
 ];
@@ -237,6 +242,48 @@ function Modal({ project, onClose }) {
         <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.85, marginBottom: "1.5rem", fontWeight: 400 }}>{project.desc}</p>
 
         {/* Demo */}
+        {project.demoUrl && (
+          <div style={{ marginBottom: "1.5rem" }}>
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.75rem 1.5rem",
+                background: "var(--gradient-primary)",
+                color: "var(--white)",
+                fontFamily: "var(--cute)",
+                fontSize: "0.75rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                fontWeight: 600,
+                transition: "all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                borderRadius: "8px",
+                boxShadow: "0 4px 20px rgba(139, 92, 246, 0.3)",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(139, 92, 246, 0.4)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(139, 92, 246, 0.3)";
+              }}
+            >
+              View Live Demo
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
+          </div>
+        )}
+
         {project.demoVideoUrl && (
           <div style={{ marginBottom: "1.5rem" }}>
             <div style={{ fontFamily: "var(--cute)", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem", fontWeight: 600 }}>Demo Video</div>
@@ -309,7 +356,7 @@ export default function Projects() {
         position: "relative",
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{
+          <motion.div {...fadeUp(0)} style={{
             fontFamily: "var(--cute)",
             fontSize: "0.7rem",
             letterSpacing: "0.15em",
@@ -319,8 +366,8 @@ export default function Projects() {
             fontWeight: 600,
           }}>
             03 — Projects
-          </div>
-          <h2 style={{
+          </motion.div>
+          <motion.h2 {...fadeUp(0.1)} style={{
             fontFamily: "var(--serif)",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 600,
@@ -330,7 +377,7 @@ export default function Projects() {
             marginBottom: "3rem",
           }}>
             Selected<br /><em style={{ fontStyle: "italic", color: "var(--accent)", fontWeight: 400 }}>Work</em>
-          </h2>
+          </motion.h2>
 
           {/* Grid with rounded cards */}
           <div style={{
@@ -339,8 +386,9 @@ export default function Projects() {
             gap: "1.5rem",
           }}>
             {projects.map((p, i) => (
-              <div
+              <motion.div
                 key={i}
+                {...fadeUp(0.2 + i * 0.1)}
                 onClick={() => setSelected(p)}
                 style={{
                   background: "var(--glass-bg)",
@@ -389,7 +437,7 @@ export default function Projects() {
                 <span style={{ fontFamily: "var(--cute)", fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600 }}>
                   View Details →
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
