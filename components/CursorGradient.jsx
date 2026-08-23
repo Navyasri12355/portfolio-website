@@ -1,18 +1,27 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function CursorGradient() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [trail, setTrail] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      const newPosition = { x: e.clientX, y: e.clientY };
       setIsVisible(true);
+      
+      setTrail(prev => {
+        const newTrail = [newPosition, ...prev];
+        // Reduce trail length to prevent lingering during quick movements
+        return newTrail.slice(0, 8);
+      });
     };
 
     const handleMouseLeave = () => {
       setIsVisible(false);
+      setTrail([]);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -23,6 +32,9 @@ export default function CursorGradient() {
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
+  // Reduce intensity significantly in light mode
+  const baseOpacity = theme === "light" ? 0.06 : 0.25;
 
   return (
     <div
@@ -37,21 +49,47 @@ export default function CursorGradient() {
         overflow: "hidden",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          left: position.x,
-          top: position.y,
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 30%, transparent 70%)",
-          borderRadius: "50%",
-          transform: "translate(-50%, -50%)",
-          transition: "opacity 0.3s ease",
-          opacity: isVisible ? 1 : 0,
-          filter: "blur(40px)",
-        }}
-      />
+      {trail.map((pos, index) => {
+        const opacity = baseOpacity * (1 - index / trail.length) * 0.8;
+        const scale = 1 - (index / trail.length) * 0.4;
+        const size = 150 * scale;
+        
+        return (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              left: pos.x,
+              top: pos.y,
+              width: `${size}px`,
+              height: `${size}px`,
+              background: `radial-gradient(circle, rgba(139, 92, 246, ${opacity}) 0%, rgba(139, 92, 246, ${theme === "light" ? 0.02 : 0.08}) 25%, transparent 60%)`,
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+              opacity: isVisible ? 1 : 0,
+              filter: "blur(20px)",
+            }}
+          />
+        );
+      })}
+      
+      {/* Secondary smaller gradient for depth at current position */}
+      {trail.length > 0 && (
+        <div
+          style={{
+            position: "absolute",
+            left: trail[0].x,
+            top: trail[0].y,
+            width: "80px",
+            height: "80px",
+            background: `radial-gradient(circle, rgba(168, 85, 247, ${baseOpacity * 0.8}) 0%, rgba(168, 85, 247, ${theme === "light" ? 0.02 : 0.1}) 30%, transparent 70%)`,
+            borderRadius: "50%",
+            transform: "translate(-50%, -50%)",
+            opacity: isVisible ? 1 : 0,
+            filter: "blur(10px)",
+          }}
+        />
+      )}
     </div>
   );
 }
